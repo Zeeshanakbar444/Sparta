@@ -1,0 +1,324 @@
+/* ============================================================
+   SPARTA BOOKING PUBLISHING - Responsive Stylesheet
+   Breakpoints follow Bootstrap 5 standard:
+   - xs: < 576px  (Mobile Portrait)
+   - sm: ≥ 576px  (Mobile Landscape)
+   - md: ≥ 768px  (Tablet)
+   - lg: ≥ 992px  (Desktop)
+   - xl: ≥ 1200px (Large Desktop)
+   ============================================================ */
+
+/* ============================================================
+   TABLET (max 991px) - Medium & Small screens
+   ============================================================ */
+@media (max-width: 991.98px) {
+
+    /* --- Top Bar --- */
+    .top-bar .offer-text {
+        font-size: 0.75rem;
+        /* Slightly smaller offer text on tablet */
+    }
+
+    /* --- Navigation --- */
+    .main-navbar {
+        padding: 10px 0;
+    }
+
+    /* Collapse mobile menu background */
+    .main-navbar .navbar-collapse {
+        background: var(--color-primary);
+        padding: 20px;
+        border-radius: var(--radius-md);
+        margin-top: 15px;
+        box-shadow: var(--shadow-md);
+    }
+
+    .main-navbar .nav-link {
+        color: var(--color-text-white) !important;
+        padding: 12px 15px !important;
+    }
+
+    .main-navbar .nav-link:hover,
+    .main-navbar .nav-link.active {
+        color: var(--color-accent) !important;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: var(--radius-sm);
+    }
+
+    .main-navbar .nav-cta-btn {
+        text-align: center;
+        margin-top: 15px;
+        padding: 12px !important;
+        display: block;
+    }
+
+    .experience-badge {
+        bottom: -15px;
+        right: -10px;
+    }
+
+    /* --- Process steps --- */
+    .process-step:not(:last-child)::after {
+        left: 26px;
+        top: 54px;
+    }
+
+    /* --- Logo text adjustment --- */
+    .logo-text .brand-name {
+        font-size: 1rem;
+    }
+
+    /* --- Section spacing reduction on tablet --- */
+    :root {
+        --section-padding: 60px 0;
+        --section-padding-sm: 40px 0;
+    }
+}
+
+/* ============================================================
+   MOBILE (max 767px) - Small screens
+   ============================================================ */
+@media (max-width: 767.98px) {
+
+    /* --- Top Bar Mobile --- */
+    .top-bar .d-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 6px !important;
+    }
+
+    .top-bar {
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    /* --- Navbar logo text hide on very small screens --- */
+    .logo-text .brand-tagline {
+        display: none;
+    }
+
+    /* --- Hero Section Mobile --- */
+    .hero-section {
+        min-height: auto;
+    }
+
+    .hero-content {
+        padding: 70px 0 40px;
+        text-align: center;
+    }
+
+    .hero-heading {
+        font-size: clamp(1.7rem, 7vw, 2.5rem);
+    }
+
+    .hero-desc {
+        font-size: 0.95rem;
+        margin: 0 auto 30px;
+    }
+
+    /* Hero buttons - stack vertically on mobile */
+    .hero-buttons {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons .btn-gold,
+    .hero-buttons .btn-outline-light-custom {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+
+    /* Hero stats - 2 columns on mobile */
+    .hero-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        justify-items: center;
+    }
+
+    .stat-number {
+        font-size: 1.6rem;
+    }
+
+    /* --- Sections padding reduction on mobile --- */
+    :root {
+        --section-padding: 50px 0;
+        --section-padding-sm: 35px 0;
+    }
+
+    /* --- Service cards - full width on mobile --- */
+    .service-card {
+        padding: 28px 22px;
+    }
+
+    /* --- About section mobile --- */
+    .about-image-wrap img {
+        height: 280px;
+    }
+
+    .experience-badge {
+        bottom: -10px;
+        right: 0;
+    }
+
+    /* --- CTA buttons center & stack on mobile --- */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-buttons .btn-gold,
+    .cta-buttons .btn-outline-light-custom {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+
+    /* --- Contact form mobile padding --- */
+    .contact-form-wrap {
+        padding: 28px 20px;
+    }
+
+    /* --- Footer columns on mobile --- */
+    .footer-newsletter .newsletter-form {
+        flex-direction: column;
+        /* Stack email input and button vertically */
+    }
+
+    /* --- Page hero mobile --- */
+    .page-hero {
+        padding: 80px 0 45px;
+    }
+
+    /* --- Process steps on mobile --- */
+    .process-step {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .process-step:not(:last-child)::after {
+        display: none;
+        /* Hide connector line on mobile vertical stack */
+    }
+
+    .step-number {
+        align-self: flex-start;
+    }
+
+    /* --- WhatsApp float button mobile position --- */
+    .whatsapp-float {
+        bottom: 20px;
+        right: 16px;
+    }
+
+    .whatsapp-btn {
+        width: 52px;
+        height: 52px;
+    }
+
+    /* --- Scroll to top mobile position --- */
+    .scroll-to-top {
+        bottom: 82px;
+        right: 20px;
+    }
+
+    /* --- Blog post featured image mobile --- */
+    .blog-post-featured-img {
+        height: 240px;
+    }
+
+    /* --- Rating summary mobile --- */
+    .rating-summary {
+        padding: 28px 20px;
+    }
+}
+
+/* ============================================================
+   EXTRA SMALL MOBILE (max 575px)
+   ============================================================ */
+@media (max-width: 575.98px) {
+
+    /* Font further reduction on very small screens */
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    /* 1 column grid on extra small */
+    .hero-stats {
+        grid-template-columns: 1fr 1fr;
+        /* Keep 2 columns but smaller */
+    }
+
+    /* FAQ accordion padding */
+    .faq-accordion .accordion-button {
+        font-size: 0.88rem;
+        padding: 16px 18px;
+    }
+
+    .faq-accordion .accordion-body {
+        padding: 0 18px 16px;
+    }
+
+    /* Review card padding */
+    .review-card {
+        padding: 22px 20px;
+    }
+
+    /* Book card image smaller */
+    .book-card img {
+        height: 200px;
+    }
+
+    /* Footer brand logo */
+    .footer-brand .footer-logo {
+        height: 45px;
+    }
+
+    /* Footer bottom flex wrap */
+    .footer-bottom .d-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+}
+
+/* ============================================================
+   LARGE DESKTOP (min 1200px) - Extra spacing
+   ============================================================ */
+@media (min-width: 1200px) {
+    :root {
+        --section-padding: 100px 0;
+    }
+
+    .hero-content {
+        padding: 120px 0 80px;
+    }
+}
+
+/* ============================================================
+   PRINT STYLES - for printing pages
+   ============================================================ */
+@media print {
+
+    .top-bar,
+    .main-navbar,
+    .whatsapp-float,
+    .scroll-to-top,
+    .site-footer {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: var(--color-text);
+    }
+}
