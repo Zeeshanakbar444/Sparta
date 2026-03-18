@@ -206,7 +206,7 @@ function initContactForm() {
 
                     // If success is false, FormSubmit usually provides a message
                     if (result.success === "false" || result.success === false) {
-                        const msg = result.message || "Activation Required! Check akbarzeeshan444@gmail.com and click 'Activate Form'.";
+                        const msg = result.message || "Activation Required! Check Musabshaikhss@gmail.com and click 'Activate Form'.";
                         alert("FormSubmit says: " + msg);
                         submitBtn.innerHTML = 'Action Required';
                         submitBtn.disabled = false;
@@ -314,7 +314,7 @@ document.querySelectorAll('.newsletter-form, #newsletterForm').forEach(form => {
             .then(res => res.json())
             .then(result => {
                 if (result.success === "false" || result.success === false) {
-                    alert("Newsletter Subscribed! BUT you must confirm your email at akbarzeeshan444@gmail.com to start receiving these notifications.");
+                    alert("Newsletter Subscribed! BUT you must confirm your email at Musabshaikhss@gmail.com to start receiving these notifications.");
                 } else {
                     alert('Thank you for subscribing! We will keep you updated.');
                 }
