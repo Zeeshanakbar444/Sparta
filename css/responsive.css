@@ -117,17 +117,23 @@
     }
 
     /* Hero buttons - stack vertically on mobile */
-    .hero-buttons {
+    .hero-buttons,
+    .hero-section-centered .d-flex.gap-3.flex-wrap {
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        gap: 15px !important;
     }
 
     .hero-buttons .btn-gold,
-    .hero-buttons .btn-outline-light-custom {
+    .hero-buttons .btn-navy,
+    .hero-buttons .btn-outline-light-custom,
+    .hero-section-centered .btn-gold,
+    .hero-section-centered .btn-navy {
         width: 100%;
-        max-width: 280px;
+        max-width: 320px;
         justify-content: center;
+        margin: 0 !important;
     }
 
     /* Hero stats - 2 columns on mobile */
@@ -232,6 +238,20 @@
     /* --- Rating summary mobile --- */
     .rating-summary {
         padding: 28px 20px;
+    }
+
+    /* --- Process buttons mobile --- */
+    .btn-row-process {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px !important;
+    }
+
+    .btn-row-process .btn-navy,
+    .btn-row-process .btn-gold {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center;
     }
 }
 
