@@ -27,30 +27,21 @@
 <style>
   /* HERO SECTION */
   /* HERO SECTION */
+  /* HERO SECTION */
   .hero-section-centered {
-    background-image: none !important;
-    background-color: #F9FAFB;
-    /* Clean light background */
+    background-color: #F8FAFC;
+    /* Slightly cleaner off-white from mockup */
     position: relative;
     padding: 100px 0;
     overflow: hidden;
   }
 
-  /* Remove dark overlay */
-  .hero-section-centered::before {
-    display: none !important;
-  }
-
-  .hero-section-centered .container {
-    position: relative;
-    z-index: 2;
-  }
-
   .hero-main-title {
-    font-size: 48px;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     color: #1A2744;
-    /* Dark Navy from screenshot */
     font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 24px;
   }
 
   .hero-main-title span {
@@ -59,75 +50,240 @@
 
   .hero-section-centered p {
     color: #4b5563;
-    /* High contrast grey */
     font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
   }
 
-  /* Responsive Fix for Mobile Hero */
-  @media (max-width: 767.98px) {
-    .hero-section-centered {
-      padding: 60px 0 !important;
-    }
-
-    .hero-main-title {
-      font-size: 2rem !important;
-    }
-
-    .hero-section-centered p {
-      font-size: 1rem !important;
-    }
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
   }
-
-  /* buttons */
 
   .btn-gold {
     background: var(--color-accent);
     color: #fff;
-    border-radius: 5px;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-weight: 700;
+    transition: all 0.3s ease;
     text-decoration: none;
+    box-shadow: 0 4px 15px rgba(204, 85, 0, 0.3);
   }
 
   .btn-gold:hover {
-    background: var(--color-secondary);
+    background: #e66000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(204, 85, 0, 0.4);
     color: #fff;
   }
 
   .btn-navy {
-    background: var(--color-primary);
+    background: #1A2744;
     color: #fff;
-    border-radius: 5px;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-weight: 700;
+    transition: all 0.3s ease;
     text-decoration: none;
   }
 
   .btn-navy:hover {
-    background: var(--color-secondary);
+    background: #121d33;
+    transform: translateY(-2px);
     color: #fff;
   }
 
   .hero-trust-badges {
-    color: #444;
-    /* Changed from white for white background support */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    color: #475569;
     font-size: 14px;
     font-weight: 600;
+    margin-bottom: 40px;
   }
 
-  .hero-mockups {
-    max-width: 100%;
+  .hero-mockup-wrapper {
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
   }
 
-  .brand-name {
-    font-size: 1.2rem;
-    line-height: 1.1;
-    font-weight: bold;
+  .hero-mockup-img {
+    width: 100%;
+    max-width: 650px;
+    filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.15));
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
-  .brand-tagline {
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    font-weight: bold;
-    color: var(--color-accent);
+  .hero-mockup-img:hover {
+    transform: scale(1.02) translateY(-10px);
+  }
+
+  /* Fade in animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive fixes */
+  @media (max-width: 991.98px) {
+    .hero-section-centered {
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .hero-main-title {
+      font-size: 2.25rem;
+    }
+
+    .hero-buttons,
+    .hero-trust-badges {
+      justify-content: center;
+    }
+
+    .hero-trust-badges .bad-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1A2744;
+    }
+
+    .hero-trust-badges .bad-item i {
+      font-size: 1.8rem;
+      color: #FF8C00;
+      /* Vibrant Deep Orange/Gold */
+      filter: drop-shadow(0 2px 4px rgba(255, 140, 0, 0.3));
+    }
+
+    .hero-mockup-wrapper {
+      margin-top: 50px;
+    }
+  }
+
+  /* --- WHY CHOOSE US SECTION --- */
+  .why-choose-section {
+    padding: 100px 0;
+    background-color: #fff;
+  }
+
+  .choose-title-area h2 {
+    font-size: 2.5rem;
+    color: #1A2744;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .choose-title-area p {
+    color: #64748b;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    max-width: 500px;
+  }
+
+  .choose-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    height: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .choose-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-accent);
+  }
+
+  .choose-card h4 {
+    color: #c0392b;
+    /* Matching the red titles in the image */
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #f1f5f9;
+    padding-bottom: 15px;
+  }
+
+  .choose-card p {
+    color: #475569;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  .conversation-box {
+    margin-top: 60px;
+    padding: 40px;
+    background: #f8fafc;
+    border-radius: 16px;
+    border-left: 5px solid #1A2744;
+  }
+
+  .conversation-box h3 {
+    font-size: 1.8rem;
+    color: #1A2744;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  .conversation-box p {
+    font-size: 1.1rem;
+    color: #475569;
+    margin-bottom: 30px;
+  }
+
+  .btn-consultancy {
+    background: #c0392b;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    border: none;
+    transition: 0.3s;
+  }
+
+  .btn-consultancy:hover {
+    background: #a93226;
+    color: #fff;
+    transform: scale(1.05);
+  }
+
+  .btn-phone-big {
+    background: #1A2744;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+  }
+
+  .btn-phone-big:hover {
+    background: #121d33;
+    color: #fff;
+    transform: scale(1.05);
   }
 </style>
+
 
 
 <body>
@@ -214,41 +370,51 @@
   <!-- =========================================================
        SECTION 1: HERO SECTION (Centered Overhaul)
        ========================================================= -->
-  <section class="hero-section-centered py-5">
+  <section class="hero-section-centered">
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row align-items-center">
 
-        <!-- Center Column -->
-        <div class="col-lg-10 text-center">
-
-          <h1 class="hero-main-title fw-bold mb-4">
+        <!-- Left Column: Content -->
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="hero-main-title">
             USA's Leading eBook <br>
             <span>Publishing Services</span> – Publish like a Pro!
           </h1>
 
-          <p class="lead mb-4 mx-auto" style="max-width: 800px;">
+          <p class="lead">
             Get your eBook professionally formatted, edited, designed, and published on
             top platforms like Kindle, Google Play, and Nook—making self-publishing easier than ever!
           </p>
 
-          <div class="hero-buttons d-flex gap-3 mb-5 flex-wrap justify-content-center">
-            <a href="contact.html" class="btn-gold px-5 py-3 fw-bold">PUBLISH TODAY</a>
-            <a href="contact.html" class="btn-navy px-5 py-3 fw-bold">CONTACT US</a>
+          <div class="hero-buttons">
+            <a href="contact.html" class="btn-gold">PUBLISH TODAY</a>
+            <a href="contact.html" class="btn-navy">CONTACT US</a>
           </div>
 
-          <div class="hero-trust-badges mb-5 justify-content-center">
-            <span>98% Formatting Accuracy</span>
-            <span class="mx-3">|</span>
-            <span>100% Rights Ownership</span>
-            <span class="mx-3">|</span>
-            <span>1000+ E-books Published</span>
+          <div class="hero-trust-badges">
+            <span class="bad-item">
+              <i class="fas fa-check-circle"></i> 98% Formatting Accuracy
+            </span>
+            <span class="bad-item">
+              <i class="fas fa-check-circle"></i> 100% Rights Ownership
+            </span>
+            <span class="bad-item">
+              <i class="fas fa-check-circle"></i> 1000+ E-books Published
+            </span>
           </div>
 
-          <div class="platform-badges-row mt-4">
-            <img src="assets/images/banner-logo.webp" alt="Certified Banners" class="img-fluid"
-              style="max-height:80px;">
+          <div class="platform-badges-row pt-4">
+            <img src="assets/images/banner-logo.webp" alt="Certified Bestseller Platforms" class="img-fluid"
+              style="max-height: 110px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); transition: transform 0.3s ease;">
           </div>
+        </div>
 
+        <!-- Right Column: Image -->
+        <div class="col-lg-6">
+          <div class="hero-mockup-wrapper text-center">
+            <img src="https://ebookpublishingservice.us.com/assets/images/ebook-publishing.webp"
+              alt="USA's Leading eBook Publishing Services" class="hero-mockup-img img-fluid">
+          </div>
         </div>
 
       </div>
@@ -519,14 +685,13 @@
       <p class="text-white-50 mb-5">Our portfolio of books that have made a lasting impact and earned their place on
         bestseller lists.</p>
 
-      <div class="row g-4 justify-content-center">
+      <div class="book-scroll-container">
         <!-- Card 1 -->
-        <div class="col-11 mx-auto col-md-4 col-lg-3">
+        <div class="book-scroll-item">
           <div class="book-card-premium">
             <div class="card-inner">
-              <img
-                src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWlsayUyMGFuZCUyMGhvbmV5JTIwc3RyYWlnaHQlMjBib29rfGVufDB8fDB8fHww"
-                alt="Milk and Honey" class="img-fluid">
+              <img src="https://ebookpublishingservice.us.com/assets/images/book-1.webp" alt="Top-Rated Collection 1"
+                class="img-fluid">
               <div class="card-overlay">
                 <h5 class="book-title">Milk and Honey</h5>
                 <p class="book-author">By Rupi Kaur</p>
@@ -535,43 +700,79 @@
           </div>
         </div>
         <!-- Card 2 -->
-        <div class="col-11 mx-auto col-md-4 col-lg-3">
+        <div class="book-scroll-item">
           <div class="book-card-premium">
             <div class="card-inner">
-              <img
-                src="https://images.unsplash.com/photo-1664222845171-f9ffe4579c1f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVzdCUyMHNlbGxlciUyMHN0YWNrfGVufDB8fDB8fHww"
-                alt="Bestseller Stack" class="img-fluid">
+              <img src="https://ebookpublishingservice.us.com/assets/images/book-2.webp" alt="Top-Rated Collection 2"
+                class="img-fluid">
               <div class="card-overlay">
-                <h5 class="book-title">Bestseller Collection</h5>
+                <h5 class="book-title">Bestseller Series</h5>
                 <p class="book-author">Business & Tech</p>
               </div>
             </div>
           </div>
         </div>
         <!-- Card 3 -->
-        <div class="col-11 mx-auto col-md-4 col-lg-3">
+        <div class="book-scroll-item">
           <div class="book-card-premium">
             <div class="card-inner">
-              <img
-                src="https://images.unsplash.com/photo-1592496431122-2349e0fbc666?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHRoZSUyMG1vZGVybiUyMGF1cnRoZXIlMjBib29rJTIwY292ZXJ8ZW58MHx8MHx8fDA%3D"
-                alt="The Modern Author" class="img-fluid">
+              <img src="https://ebookpublishingservice.us.com/assets/images/book-3.webp" alt="Top-Rated Collection 3"
+                class="img-fluid">
               <div class="card-overlay">
-                <h5 class="book-title">The Modern Author</h5>
+                <h5 class="book-title">Modern Excellence</h5>
                 <p class="book-author">By Sarah Wilson</p>
               </div>
             </div>
           </div>
         </div>
         <!-- Card 4 -->
-        <div class="col-11 mx-auto col-md-4 col-lg-3 text-center">
+        <div class="book-scroll-item">
           <div class="book-card-premium">
             <div class="card-inner">
-              <img
-                src="https://images.unsplash.com/photo-1647529735054-9b68c881fdc9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZmVhdHVyZWQlMjBib29rfGVufDB8fDB8fHww"
-                alt="Featured Book" class="img-fluid">
+              <img src="https://ebookpublishingservice.us.com/assets/images/book-4.webp" alt="Top-Rated Collection 4"
+                class="img-fluid">
               <div class="card-overlay">
-                <h5 class="book-title">Bestseller Blueprint</h5>
+                <h5 class="book-title">Author's Choice</h5>
                 <p class="book-author">By Michael Brown</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="book-scroll-item">
+          <div class="book-card-premium">
+            <div class="card-inner">
+              <img src="https://ebookpublishingservice.us.com/assets/images/book-5.webp" alt="Top-Rated Collection 5"
+                class="img-fluid">
+              <div class="card-overlay">
+                <h5 class="book-title">E-Book Excellence</h5>
+                <p class="book-author">Premium Collection</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="book-scroll-item">
+          <div class="book-card-premium">
+            <div class="card-inner">
+              <img src="https://ebookpublishingservice.us.com/assets/images/book-6.webp" alt="Top-Rated Collection 6"
+                class="img-fluid">
+              <div class="card-overlay">
+                <h5 class="book-title">Digital Mastery</h5>
+                <p class="book-author">Expert Series</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 7 -->
+        <div class="book-scroll-item">
+          <div class="book-card-premium">
+            <div class="card-inner">
+              <img src="https://ebookpublishingservice.us.com/assets/images/book-7.webp" alt="Top-Rated Collection 7"
+                class="img-fluid">
+              <div class="card-overlay">
+                <h5 class="book-title">Author's Journey</h5>
+                <p class="book-author">Inspiration Guide</p>
               </div>
             </div>
           </div>
@@ -597,22 +798,99 @@
          NEW SECTION: REFINED PLATFORM STRIP
          ========================================================= -->
   <section class="platform-strip-enhanced">
-    <div class="container">
-      <div class="d-flex flex-wrap justify-content-center align-items-center gap-5">
+    <div class="container-fluid">
+      <div class="ticker-header">
         <span class="fw-bold text-muted">Enjoy Book <span class="text-primary"
             style="color: var(--color-primary) !important;">Publishing</span> At</span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Kindle"
-          style="height: 30px;">
-        <img src="https://ebookpublishingservice.us.com/assets/images/apple-books.webp" alt="Apple Books"
-          style="height: 40px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Google_Play_2022_logo.svg" alt="Google Play"
-          style="height: 35px;">
-        <img src="https://ebookpublishingservice.us.com/assets/images/scribd.webp" alt="Scribd" style="height: 30px;">
-        <img src="https://ebookpublishingservice.us.com/assets/images/smashwords.webp" alt="Smashwords"
-          style="height: 35px;">
+      </div>
+      <div class="platform-scroll-container">
+        <div class="platform-item"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+            alt="Amazon Kindle"></div>
+        <div class="platform-item"><img src="https://ebookpublishingservice.us.com/assets/images/apple-books.webp"
+            alt="Apple Books"></div>
+        <div class="platform-item"><img
+            src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Google_Play_2022_logo.svg" alt="Google Play"></div>
+        <div class="platform-item"><img src="https://ebookpublishingservice.us.com/assets/images/scribd.webp"
+            alt="Scribd"></div>
+        <div class="platform-item"><img src="https://ebookpublishingservice.us.com/assets/images/smashwords.webp"
+            alt="Smashwords"></div>
       </div>
     </div>
   </section>
+
+  <!-- =========================================================
+       SECTION: WHY CHOOSE US (As requested in image)
+       ========================================================= -->
+  <section class="why-choose-section">
+    <div class="container">
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-5 choose-title-area animate-fade-up">
+          <h6 class="text-uppercase fw-bold mb-3" style="color: #c0392b; letter-spacing: 2px;">Value Proposition</h6>
+          <h2>Why <span class="text-gold">Choose</span> Us?</h2>
+          <p>American Book Publisher provides you with a set of strengths by which you can evaluate our talents—these
+            are
+            the kinds of things that are perfect for a great outcome.</p>
+          <a href="contact.html" class="btn-navy px-5 py-3 fw-bold">GET STARTED</a>
+        </div>
+        <div class="col-lg-7">
+          <div class="row g-4">
+            <!-- Card 1 -->
+            <div class="col-md-6">
+              <div class="choose-card animate-fade-up">
+                <h4>Professionalism That Sets Us Apart</h4>
+                <p>Our team of professionals contributes unparalleled expertise to every aspect of the book publishing
+                  process based on years of industry experience.</p>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-md-6">
+              <div class="choose-card animate-fade-up">
+                <h4>Personalized Method</h4>
+                <p>We recognize that each author and book is distinct. Because of this, we take a personalized approach,
+                  tailoring our services to your particular requirements.</p>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-6">
+              <div class="choose-card animate-fade-up">
+                <h4>Outstanding Quality</h4>
+                <p>All of our services, from writing and editing to marketing and publishing, are committed to
+                  delivering exceptional quality. Your book deserves our very best efforts.</p>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="col-md-6">
+              <div class="choose-card animate-fade-up">
+                <h4>Results-Driven Strategies</h4>
+                <p>We go above and beyond standard practices to create innovative, results-driven book marketing and
+                  promotion strategies. Our objective is to help your book stand out.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversation Prompt Box -->
+      <div class="conversation-box text-center text-lg-start animate-fade-up">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h3>Are you prepared to start a conversation?</h3>
+            <p class="mb-lg-0">We are a universe of linguistic creativity. Share your story with the world today.
+            </p>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-lg-end mt-4 mt-lg-0">
+              <a href="contact.html" class="btn-consultancy">Get Free Consultancy</a>
+              <a href="tel:+19295635934" class="btn-phone-big">
+                <i class="fas fa-phone-alt"></i> +1 929 563 5934
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- =========================================================
        SECTION 6: WHY WE’RE THE #1 E-BOOK PUBLISHING AGENCY
        ========================================================= -->
@@ -1196,14 +1474,14 @@
         <div class="col-lg-3 col-md-4">
           <h5 class="fw-bold mb-4">Contact Info</h5>
           <ul class="list-unstyled">
-            <li class="mb-3 d-flex gap-3 align-items-center">
+            <!-- <li class="mb-3 d-flex gap-3 align-items-center">
               <i class="fas fa-phone text-secondary"></i>
               <a href="tel:+9203322122395" class="text-white-50 text-decoration-none">03322122395</a>
-            </li>
+            </li> -->
             <li class="mb-3 d-flex gap-3 align-items-center">
               <i class="fas fa-envelope text-secondary"></i>
-              <a href="mailto:Musabshaikhss@gmail.com"
-                class="text-white-50 text-decoration-none">Musabshaikhss@gmail.com</a>
+              <a href="mailto:info@spartabookpublishing.com"
+                class="text-white-50 text-decoration-none">info@spartabookpublishing.com</a>
             </li>
             <!-- <li class="mb-3 d-flex gap-3 align-items-center">
               <i class="fab fa-whatsapp text-secondary"></i>

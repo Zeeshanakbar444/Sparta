@@ -2850,14 +2850,91 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* --- Premium Book Card Refinement --- */
+/* --- Premium Book Card Scroller --- */
+.book-scroll-container {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding: 30px 10px 50px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
+}
+
+.book-scroll-container.active-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  /* Disable snap during manual drag for smoothness */
+  scroll-behavior: auto;
+}
+
+/* Custom scrollbar for desktop visibility */
+.book-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.book-scroll-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.book-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 10px;
+}
+
+.book-scroll-item {
+  flex: 0 0 22%;
+  /* Shows ~4.5 cards on laptop */
+  scroll-snap-align: start;
+  transition: all 0.5s ease;
+  animation: fadeSlideUp 0.8s ease-out both;
+}
+
+.book-scroll-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.book-scroll-item:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.book-scroll-item:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.book-scroll-item:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.book-scroll-item:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+.book-scroll-item:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .book-card-premium {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  background: #222;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  background: #111;
   aspect-ratio: 2/3;
   width: 100%;
 }
@@ -2865,52 +2942,88 @@ body {
 .book-card-premium .card-inner {
   height: 100%;
   width: 100%;
+  position: relative;
 }
 
 .book-card-premium img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .book-card-premium .card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 20px;
+  padding: 25px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
 }
 
 .book-card-premium:hover {
-  transform: translateY(-15px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  transform: translateY(-20px) scale(1.03);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
   z-index: 10;
 }
 
 .book-card-premium:hover img {
-  transform: scale(1.1);
+  transform: scale(1.15);
+  filter: brightness(0.7);
 }
 
 .book-card-premium:hover .card-overlay {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .book-title {
-  color: var(--color-gold);
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 5px;
+  color: var(--color-accent);
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  font-family: 'Playfair Display', serif;
 }
 
 .book-author {
-  color: #ccc;
-  font-size: 0.85rem;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  font-weight: 500;
   margin-bottom: 0;
+}
+
+@media (max-width: 1199px) {
+  .book-scroll-item {
+    flex: 0 0 30%;
+    /* 3.3 cards on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .book-scroll-container {
+    gap: 20px;
+    padding: 20px 10px 40px;
+  }
+
+  .book-scroll-item {
+    flex: 0 0 45%;
+    /* 2.2 cards on mobile */
+  }
+
+  .book-card-premium:hover {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .book-scroll-item {
+    flex: 0 0 85%;
+    /* 1.1 cards on small mobile */
+  }
 }
 
 /* ============================================================
@@ -3045,4 +3158,94 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 40px;
+}
+
+/* PLATFORM SCROLLER - Global Styles */
+.platform-strip-enhanced {
+  padding: 60px 0;
+  background: #F8FAFC;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.ticker-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.platform-scroll-container {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  overflow-x: auto;
+  padding: 20px 40px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  justify-content: center;
+  flex-wrap: nowrap;
+  cursor: grab;
+  user-select: none;
+}
+
+.platform-scroll-container.active-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.platform-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.platform-item {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.platform-item img {
+  height: 45px;
+  width: auto;
+  filter: none !important;
+  opacity: 1 !important;
+  transition: transform 0.3s ease;
+}
+
+.platform-item img:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 991px) {
+  .platform-scroll-container {
+    justify-content: flex-start;
+    gap: 0;
+    padding: 20px 0;
+  }
+
+  .platform-item {
+    flex: 0 0 50%;
+    /* EXACTLY 2 LOGOS ON MOBILE SCREEN */
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .platform-strip-enhanced {
+    padding: 40px 0;
+  }
+
+  .platform-item img {
+    height: 55px;
+    /* Larger logos on mobile as per reference image */
+  }
+}
+
+@media (max-width: 480px) {
+  .platform-item img {
+    height: 40px;
+  }
 }

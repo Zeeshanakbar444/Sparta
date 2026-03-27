@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initContactForm();       // Contact form submission handler
     initScrollToTop();       // Scroll to top button visibility
     highlightActiveNav();    // Mark current page link as active
+    initDragScroll('.book-scroll-container');     // Mouse drag for books
+    initDragScroll('.platform-scroll-container'); // Mouse drag for platforms
 });
 
 /* ============================================================
@@ -206,7 +208,7 @@ function initContactForm() {
 
                     // If success is false, FormSubmit usually provides a message
                     if (result.success === "false" || result.success === false) {
-                        const msg = result.message || "Activation Required! Check Musabshaikhss@gmail.com and click 'Activate Form'.";
+                        const msg = result.message || "Activation Required! Check info@spartabookpublishing.com and click 'Activate Form'.";
                         alert("FormSubmit says: " + msg);
                         submitBtn.innerHTML = 'Action Required';
                         submitBtn.disabled = false;
@@ -314,7 +316,7 @@ document.querySelectorAll('.newsletter-form, #newsletterForm').forEach(form => {
             .then(res => res.json())
             .then(result => {
                 if (result.success === "false" || result.success === false) {
-                    alert("Newsletter Subscribed! BUT you must confirm your email at Musabshaikhss@gmail.com to start receiving these notifications.");
+                    alert("Newsletter Subscribed! BUT you must confirm your email at info@spartabookpublishing.com to start receiving these notifications.");
                 } else {
                     alert('Thank you for subscribing! We will keep you updated.');
                 }
@@ -363,3 +365,46 @@ document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle)').forEach
         }
     });
 });
+/* ============================================================
+   11. DRAG TO SCROLL - Enables mouse dragging for scrollers
+   ============================================================ */
+function initDragScroll(selector) {
+    const sliders = document.querySelectorAll(selector);
+    if (!sliders.length) return;
+
+    sliders.forEach(slider => {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active-dragging');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active-dragging');
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active-dragging');
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; // scroll-fast multiplier
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // Prevent dragging of images within the slider
+        slider.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
+        });
+    });
+}
