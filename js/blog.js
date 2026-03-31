@@ -1,5 +1,5 @@
 /* ============================================================
-   SPARTA BOOKING PUBLISHING - WordPress Blog API
+   SPARTA BOOK PUBLISHING - WordPress Blog API
    
    This file handles all communication with the WordPress REST API.
    
@@ -243,7 +243,7 @@ async function fetchSinglePost() {
     } catch (e) { }
 
     const title = decodeHTMLEntities(post.title.rendered);
-    document.title = `${title} - SPARTA BOOKING PUBLISHING`;
+    document.title = `${title} - SPARTA BOOK PUBLISHING`;
 
     container.innerHTML = `
       <div class="animate-fade-in">

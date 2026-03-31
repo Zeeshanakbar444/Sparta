@@ -1,5 +1,5 @@
 /* ============================================================
-   SPARTA BOOKING PUBLISHING - Main JavaScript
+   SPARTA BOOK PUBLISHING - Main JavaScript
    Handles: Navigation, Scroll effects, Counters,
             Animations, FAQ, Contact form, Scroll to top
    ============================================================ */

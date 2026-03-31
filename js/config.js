@@ -1,5 +1,5 @@
 /* ============================================================
-   SPARTA BOOKING PUBLISHING - WordPress API Configuration
+   SPARTA BOOK PUBLISHING - WordPress API Configuration
    
    📌 HOW TO CONFIGURE:
    1. Open this file (js/config.js)
